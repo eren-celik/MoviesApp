@@ -17,6 +17,12 @@
 		108602C526710FDA00C4BF23 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108602C426710FDA00C4BF23 /* AppRouter.swift */; };
 		108602C82671103500C4BF23 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108602C72671103500C4BF23 /* UIView+Extensions.swift */; };
 		108602D52671130F00C4BF23 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 108602D42671130F00C4BF23 /* SceneDelegate.swift */; };
+		B01E215626715A790077CF1D /* MovieViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01E215526715A790077CF1D /* MovieViewModel.swift */; };
+		B01E215926715B5A0077CF1D /* MockPopularTVShowsData.json in Resources */ = {isa = PBXBuildFile; fileRef = B01E215826715B5A0077CF1D /* MockPopularTVShowsData.json */; };
+		B01E215B26715BE00077CF1D /* TVShowsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01E215A26715BE00077CF1D /* TVShowsModel.swift */; };
+		B01E215D26715C640077CF1D /* MockPopularTVShowData.json in Resources */ = {isa = PBXBuildFile; fileRef = B01E215C26715C640077CF1D /* MockPopularTVShowData.json */; };
+		B01E215F26715EFB0077CF1D /* TVShowModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01E215E26715EFB0077CF1D /* TVShowModel.swift */; };
+		B01E21622671623E0077CF1D /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B01E21612671623E0077CF1D /* Constants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +59,12 @@
 		108602C426710FDA00C4BF23 /* AppRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		108602C72671103500C4BF23 /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		108602D42671130F00C4BF23 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		B01E215526715A790077CF1D /* MovieViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieViewModel.swift; sourceTree = "<group>"; };
+		B01E215826715B5A0077CF1D /* MockPopularTVShowsData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MockPopularTVShowsData.json; sourceTree = "<group>"; };
+		B01E215A26715BE00077CF1D /* TVShowsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowsModel.swift; sourceTree = "<group>"; };
+		B01E215C26715C640077CF1D /* MockPopularTVShowData.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = MockPopularTVShowData.json; sourceTree = "<group>"; };
+		B01E215E26715EFB0077CF1D /* TVShowModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowModel.swift; sourceTree = "<group>"; };
+		B01E21612671623E0077CF1D /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,8 +118,9 @@
 				108602D12671113C00C4BF23 /* Supporting Files */,
 				108602D02671113400C4BF23 /* Resources */,
 				108602CE267110A100C4BF23 /* Utilities */,
-				108602CD2671109B00C4BF23 /* Model */,
-				108602CC2671109100C4BF23 /* ViewModels */,
+				B01E2160267162290077CF1D /* Service */,
+				B01E2153267156F50077CF1D /* Model */,
+				B01E2154267156FC0077CF1D /* ViewModel */,
 				108602C92671107700C4BF23 /* View */,
 			);
 			path = "Movies App";
@@ -116,6 +129,7 @@
 		108602A626710EEB00C4BF23 /* Movies AppTests */ = {
 			isa = PBXGroup;
 			children = (
+				B01E215726715B400077CF1D /* MockData */,
 				108602A726710EEB00C4BF23 /* Movies_AppTests.swift */,
 				108602A926710EEB00C4BF23 /* Info.plist */,
 			);
@@ -166,20 +180,6 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		108602CC2671109100C4BF23 /* ViewModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = ViewModels;
-			sourceTree = "<group>";
-		};
-		108602CD2671109B00C4BF23 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		108602CE267110A100C4BF23 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -204,6 +204,40 @@
 				1086029E26710EEB00C4BF23 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B01E2153267156F50077CF1D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B01E215A26715BE00077CF1D /* TVShowsModel.swift */,
+				B01E215E26715EFB0077CF1D /* TVShowModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B01E2154267156FC0077CF1D /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B01E215526715A790077CF1D /* MovieViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		B01E215726715B400077CF1D /* MockData */ = {
+			isa = PBXGroup;
+			children = (
+				B01E215826715B5A0077CF1D /* MockPopularTVShowsData.json */,
+				B01E215C26715C640077CF1D /* MockPopularTVShowData.json */,
+			);
+			path = MockData;
+			sourceTree = "<group>";
+		};
+		B01E2160267162290077CF1D /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				B01E21612671623E0077CF1D /* Constants.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -318,6 +352,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B01E215D26715C640077CF1D /* MockPopularTVShowData.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -325,6 +360,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B01E215926715B5A0077CF1D /* MockPopularTVShowsData.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,11 +371,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B01E215B26715BE00077CF1D /* TVShowsModel.swift in Sources */,
 				108602C82671103500C4BF23 /* UIView+Extensions.swift in Sources */,
 				1086029526710EE400C4BF23 /* MainViewController.swift in Sources */,
 				108602C326710FD300C4BF23 /* AppContainer.swift in Sources */,
+				B01E215F26715EFB0077CF1D /* TVShowModel.swift in Sources */,
+				B01E21622671623E0077CF1D /* Constants.swift in Sources */,
 				1086029126710EE400C4BF23 /* AppDelegate.swift in Sources */,
 				108602C526710FDA00C4BF23 /* AppRouter.swift in Sources */,
+				B01E215626715A790077CF1D /* MovieViewModel.swift in Sources */,
 				108602D52671130F00C4BF23 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
