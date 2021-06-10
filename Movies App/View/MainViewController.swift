@@ -8,6 +8,20 @@
 import UIKit
 import JGProgressHUD
 
+enum IndicatorStyles {
+    case error
+    case loading
+    
+    var indicatorView: JGProgressHUDIndicatorView {
+        switch self {
+        case .error:
+            return JGProgressHUDErrorIndicatorView()
+        case .loading:
+            return JGProgressHUDIndicatorView()
+        }
+    }
+}
+
 class MainViewController: UIViewController {
     
     private var tableView: UITableView = {
@@ -46,6 +60,7 @@ extension MainViewController {
         
         navigationController?.navigationBar.topItem?.title = "TV Shows"
         navigationController?.navigationBar.prefersLargeTitles = true
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(refreshList))
         
         view.addSubview(tableView)
     }
@@ -58,15 +73,21 @@ extension MainViewController {
         indicator.startAnimating()
         return footerView
     }
-    
-    private func showHud(text: String) -> JGProgressHUD {
+
+    private func showHud(text: String, viewType: IndicatorStyles ) -> JGProgressHUD {
         let hud = JGProgressHUD()
         hud.textLabel.text = text
         hud.shadow = JGProgressHUDShadow(color: .black, offset: .zero, radius: 5.0, opacity: 0.2)
-        hud.indicatorView = JGProgressHUDErrorIndicatorView()
+        hud.indicatorView = viewType.indicatorView
         hud.show(in: self.view)
         hud.dismiss(afterDelay: 3.0)
         return hud
+    }
+    
+    @objc private func refreshList(){
+        self.movieList.removeAll()
+        _ = showHud(text: "Loading", viewType: .loading)
+        viewModel.getData()
     }
 }
 
@@ -81,7 +102,7 @@ extension MainViewController: MovieListViewModelDelegate{
             self.tableView.tableFooterView = nil
             self.tableView.reloadData()
         case .showAlert(let text):
-            _ = showHud(text: text)
+            _ = showHud(text: text, viewType: .error)
         }
     }
 }

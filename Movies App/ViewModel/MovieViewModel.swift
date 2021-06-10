@@ -51,7 +51,7 @@ final class MovieViewModel : ObservableObject, MovieListViewModelProtocol{
         guard let url = URL(string: "https://api.themoviedb.org/3/tv/popular?api_key=\(apiKey)&language=en-US&page=\(pageCount)") else {
             return
         }
-        print(url)
+        
         networkManager.getDataFromIntenet(url: url, decodingType: TVShowsModel.self)
             .sink { status in
                 switch status{
