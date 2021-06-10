@@ -33,7 +33,7 @@ class MainViewController: UIViewController {
         return tableView
     }()
     
-    var viewModel: MovieListViewModelProtocol! {
+    var viewModel: ShowListViewModelProtocol! {
         didSet {
             viewModel.delegate = self
         }
@@ -92,8 +92,17 @@ extension MainViewController {
     }
 }
 
-extension MainViewController: MovieListViewModelDelegate{
-    func handleViewModelOutput(_ output: MovieListViewModelOutput) {
+extension MainViewController: ShowListViewModelDelegate{
+    func navigate(to route: ShowListViewRoute) {
+        switch route {
+        case .detail(let viewModel):
+            let viewController = DetailShowViewController()
+            viewController.viewModel = viewModel
+            present(viewController, animated: true)
+        }
+    }
+    
+    func handleViewModelOutput(_ output: ShowListViewModelOutput) {
         switch output {
         case .showMovieList(let movieList):
             self.movieList = movieList.results
@@ -143,7 +152,8 @@ extension MainViewController: UITableViewDataSource {
 
 extension MainViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //Todo:
+        tableView.deselectRow(at: indexPath, animated: false)
+        viewModel.selectMovie(at: movieList[indexPath.row].id)
     }
 }
 

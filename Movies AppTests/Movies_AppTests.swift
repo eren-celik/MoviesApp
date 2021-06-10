@@ -15,11 +15,8 @@ class Movies_AppTests: XCTestCase {
     }
 
     func testLoad() throws {
-        let data =  Bundle(for: Movies_AppTests.self).decode(TVShowsModel.self, from: "exampleData.json")
-
-
-
-
+        let data =  Bundle(for: Movies_AppTests.self).decode(TVShowsModel.self, from: "MockPopularTVShowsData.json")
+        XCTAssertEqual(data.page, 1)
     }
     
 }

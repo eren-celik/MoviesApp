@@ -31,6 +31,7 @@ class TVShowCell: UITableViewCell {
 }
 
 extension TVShowCell {
+    
     func configureCell(cellText: String,
                        cellImageURL: String,
                        cellAvarageRating: String,
@@ -53,10 +54,8 @@ extension TVShowCell {
 
 
 /*
-
- /*
   ## Add Supported Image Sizes
-                                   Min Res      Max Res
+    Min Res      Max Res
   poster   = Poster ............  500 x 750   2000 x 3000
   backdrop = Fanart ............ 1280 x 720   3840 x 2160
   still    = TV Show Episode ... 1280 x 720   3840 x 2160
@@ -81,7 +80,4 @@ extension TVShowCell {
 
   Original Size is the size of the uploaded image.
   It can be between Minimum Resolution and Maximum Resolution.
-
-  */
-
  */

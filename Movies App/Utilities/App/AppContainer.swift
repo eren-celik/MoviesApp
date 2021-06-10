@@ -18,7 +18,7 @@ final class AppRouter {
     func start(windowScene: UIWindowScene) {
         let viewController = MainViewController()
         let navigationController = UINavigationController(rootViewController: viewController)
-        viewController.viewModel = MovieViewModel(networkManager: app.service)
+        viewController.viewModel = ShowViewModel(networkManager: app.service)
         window.rootViewController = navigationController
         window.windowScene = windowScene
         window.makeKeyAndVisible()

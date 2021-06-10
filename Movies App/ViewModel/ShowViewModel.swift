@@ -12,15 +12,14 @@ import Foundation
 import Combine
 
 
-final class MovieViewModel : ObservableObject, MovieListViewModelProtocol{
+final class ShowViewModel : ObservableObject, ShowListViewModelProtocol{
     
-    
-    weak var delegate: MovieListViewModelDelegate?
+    weak var delegate: ShowListViewModelDelegate?
     
     private let apiKey : String = "4005c573921688f26f2b7c5c89d03c88"
     private let networkManager : NetworkManager
     private var cancellable = Set<AnyCancellable>()
-    var pageCount : Int = 1
+    private var pageCount : Int = 1
     
     init(networkManager: NetworkManager){
         self.networkManager = networkManager
@@ -71,10 +70,18 @@ final class MovieViewModel : ObservableObject, MovieListViewModelProtocol{
             }
             .store(in: &cancellable)
     }
+}
+extension ShowViewModel {
     
-    private func notify(_ output: MovieListViewModelOutput) {
+    private func notify(_ output: ShowListViewModelOutput) {
         delegate?.handleViewModelOutput(output)
     }
+    
+    func selectMovie(at showID: Int) {
+        let viewModel = ShowDetailViewModel(movieID: showID, networkManager: networkManager)
+        delegate?.navigate(to: .detail(viewModel))
+    }
+    
 }
 
 
