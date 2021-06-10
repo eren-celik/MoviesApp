@@ -6,7 +6,7 @@
 //
 
 //Brings a shows URL:https://api.themoviedb.org/3/tv/popular?api_key=4005c573921688f26f2b7c5c89d03c88&language=en-US&page=1
-//Brins a spesific show URL: https://api.themoviedb.org/3/tv/31917?api_key=4005c573921688f26f2b7c5c89d03c88&language=en-US#
+//Brings a spesific show URL: https://api.themoviedb.org/3/tv/31917?api_key=4005c573921688f26f2b7c5c89d03c88&language=en-US#
 
 import Foundation
 import Combine

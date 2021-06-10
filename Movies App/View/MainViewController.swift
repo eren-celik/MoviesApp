@@ -12,7 +12,8 @@ class MainViewController: UIViewController  {
     private var tableView: UITableView = {
         var tableView = UITableView()
         tableView = UITableView(frame: UIScreen.main.bounds)
-        tableView.register(TVShowCell.self,
+        let nib = UINib(nibName: "TVShowCell", bundle: nil)
+        tableView.register(nib,
                            forCellReuseIdentifier: TVShowCell.identifier)
         return tableView
     }()
@@ -29,26 +30,27 @@ class MainViewController: UIViewController  {
         navigationController?.navigationBar.topItem?.title = "TV Shows"
         navigationController?.navigationBar.prefersLargeTitles = true
         
-        self.view.addSubview(tableView)
+        view.addSubview(tableView)
     }
 }
 
 extension MainViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 2
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: TVShowCell.identifier, for: indexPath) as? TVShowCell else {
             return UITableViewCell()
         }
-        cell.configureCell(tvShowName: "Eren")
+        
+        cell.configureCell(cellText: "eren",
+                           cellImageURL: "https://image.tmdb.org/t/p/original/h48Dpb7ljv8WQvVdyFWVLz64h4G.jpg",
+                           cellAvarageRating: "1.3")
         return cell
     }
     
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 100
-//    }
+
 }
 
 extension MainViewController: UITableViewDelegate {
