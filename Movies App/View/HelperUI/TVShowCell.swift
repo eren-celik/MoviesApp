@@ -14,11 +14,11 @@ class TVShowCell: UITableViewCell {
     @IBOutlet weak private var tvShowImage: UIImageView!
     @IBOutlet weak private var tvShowName: UILabel!
     @IBOutlet weak private var tvAvaregeRating: UILabel!
+    @IBOutlet weak private var VoteCount: UILabel!
     
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        configureUI()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -33,18 +33,24 @@ class TVShowCell: UITableViewCell {
 extension TVShowCell {
     func configureCell(cellText: String,
                        cellImageURL: String,
-                       cellAvarageRating: String) {
+                       cellAvarageRating: String,
+                       cellVotecount: String) {
         
-        tvShowImage.sd_setImage(with: URL(string: cellImageURL)!)
-        tvShowName.text = cellText
-        tvAvaregeRating.text = cellAvarageRating
-    }
-    
-    private func configureUI(){
+        tvShowImage.sd_setImage(with: URL(string: "https://image.tmdb.org/t/p/w342\(cellImageURL)")!)
         tvShowImage.layer.cornerRadius = 20
+        tvShowName.text = cellText
+        tvShowName.font = .rounded(ofSize: 20,
+                                   weight: .medium)
+
+        tvAvaregeRating.text = cellAvarageRating
+        tvAvaregeRating.font = .rounded(ofSize: 15,
+                                        weight: .light)
+        VoteCount.text = "Vote Count: " + cellVotecount
+        tvAvaregeRating.font = .rounded(ofSize: 15,
+                                        weight: .light)
     }
-    
 }
+
 
 /*
 

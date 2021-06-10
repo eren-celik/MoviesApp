@@ -10,22 +10,17 @@ import Foundation
 
 protocol MovieListViewModelProtocol {
     var delegate: MovieListViewModelDelegate? { get set }
-    func load()
-    func selectMovie(at index: Int)
+    func getData()
+    func getMoreData()
 }
-
-enum MovieListViewModelOutput {
-    case updateTitle(String)
-    case setLoading(Bool)
-    case showMovieList(TVShowsModel)
-}
-
-//enum MovieListViewRoute {
-//    case detail(MovieDetailViewModelProtocol)
-//}
 
 protocol MovieListViewModelDelegate: AnyObject {
     func handleViewModelOutput(_ output: MovieListViewModelOutput)
-//    func navigate(to route: MovieListViewRoute)
+}
+
+enum MovieListViewModelOutput {
+    case showMovieList(TVShowsModel)
+    case showMoreMovie(TVShowsModel)
+    case showAlert(String)
 }
 

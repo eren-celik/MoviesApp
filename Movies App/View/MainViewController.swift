@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import JGProgressHUD
 
-class MainViewController: UIViewController  {
+class MainViewController: UIViewController {
     
     private var tableView: UITableView = {
         var tableView = UITableView()
@@ -18,10 +19,26 @@ class MainViewController: UIViewController  {
         return tableView
     }()
     
+    var viewModel: MovieListViewModelProtocol! {
+        didSet {
+            viewModel.delegate = self
+        }
+    }
+    
+    private var movieList: [Result] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.getData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         configureUI()
     }
+    
+}
+extension MainViewController {
     
     private func configureUI() {
         tableView.delegate = self
@@ -32,11 +49,47 @@ class MainViewController: UIViewController  {
         
         view.addSubview(tableView)
     }
+    
+    private func loadingIndicator() -> UIView {
+        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 100))
+        let indicator = UIActivityIndicatorView()
+        indicator.center = footerView.center
+        footerView.addSubview(indicator)
+        indicator.startAnimating()
+        return footerView
+    }
+    
+    private func showHud(text: String) -> JGProgressHUD {
+        let hud = JGProgressHUD()
+        hud.textLabel.text = text
+        hud.shadow = JGProgressHUDShadow(color: .black, offset: .zero, radius: 5.0, opacity: 0.2)
+        hud.indicatorView = JGProgressHUDErrorIndicatorView()
+        hud.show(in: self.view)
+        hud.dismiss(afterDelay: 3.0)
+        return hud
+    }
 }
 
-extension MainViewController: UITableViewDataSource{
+extension MainViewController: MovieListViewModelDelegate{
+    func handleViewModelOutput(_ output: MovieListViewModelOutput) {
+        switch output {
+        case .showMovieList(let movieList):
+            self.movieList = movieList.results
+            self.tableView.reloadData()
+        case .showMoreMovie(let movieList):
+            self.movieList += movieList.results
+            self.tableView.tableFooterView = nil
+            self.tableView.reloadData()
+        case .showAlert(let text):
+            _ = showHud(text: text)
+        }
+    }
+}
+
+extension MainViewController: UITableViewDataSource {
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        return movieList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -44,19 +97,32 @@ extension MainViewController: UITableViewDataSource{
             return UITableViewCell()
         }
         
-        cell.configureCell(cellText: "eren",
-                           cellImageURL: "https://image.tmdb.org/t/p/original/h48Dpb7ljv8WQvVdyFWVLz64h4G.jpg",
-                           cellAvarageRating: "1.3")
+        cell.configureCell(cellText: movieList[indexPath.row].name,
+                           cellImageURL: movieList[indexPath.row].backdropPath ?? "https://www.natro.com/hosting-sozlugu/wp-content/uploads/2015/12/404-not-found.png",
+                           cellAvarageRating: "\(movieList[indexPath.row].voteAverage)",
+                           cellVotecount: "\(movieList[indexPath.row].voteCount)"
+        )
+        
+        if indexPath.row == movieList.count-2 {
+            self.tableView.tableFooterView = loadingIndicator()
+            DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + 1) { [weak self] in
+                self?.viewModel.getMoreData()
+            }
+        }
+        
         return cell
     }
     
-
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 150
+    }
+    
 }
 
 extension MainViewController: UITableViewDelegate {
-
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //Todo:
     }
 }
+
 

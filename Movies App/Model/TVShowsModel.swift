@@ -8,55 +8,49 @@
 import Foundation
 
 // MARK: - TVShowsModel
-struct TVShowsModel: Codable {
+struct TVShowsModel: Decodable {
     let page: Int
     let results: [Result]
-    let totalResults, totalPages: Int
+    let totalPages: Int
+    let totalResults: Int
 
     enum CodingKeys: String, CodingKey {
-        case page, results
-        case totalResults = "total_results"
+        case page = "page"
+        case results = "results"
         case totalPages = "total_pages"
+        case totalResults = "total_results"
     }
 }
 
 // MARK: - Result
 struct Result: Codable {
-    let posterPath: String
-    let popularity: Double
-    let id: Int
-    let backdropPath: String
-    let voteAverage: Double
-    let overview, firstAirDate: String
-    let originCountry: [OriginCountry]
+    let backdropPath: String?
+    let firstAirDate: String
     let genreIDS: [Int]
-    let originalLanguage: OriginalLanguage
+    let id: Int
+    let name: String
+    let originCountry: [String]
+    let originalLanguage: String
+    let originalName: String
+    let overview: String
+    let popularity: Double
+    let posterPath: String?
+    let voteAverage: Double
     let voteCount: Int
-    let name, originalName: String
 
     enum CodingKeys: String, CodingKey {
-        case posterPath = "poster_path"
-        case popularity, id
         case backdropPath = "backdrop_path"
-        case voteAverage = "vote_average"
-        case overview
         case firstAirDate = "first_air_date"
-        case originCountry = "origin_country"
         case genreIDS = "genre_ids"
+        case id = "id"
+        case name = "name"
+        case originCountry = "origin_country"
         case originalLanguage = "original_language"
-        case voteCount = "vote_count"
-        case name
         case originalName = "original_name"
+        case overview = "overview"
+        case popularity = "popularity"
+        case posterPath = "poster_path"
+        case voteAverage = "vote_average"
+        case voteCount = "vote_count"
     }
-}
-
-enum OriginCountry: String, Codable {
-    case gb = "GB"
-    case jp = "JP"
-    case us = "US"
-}
-
-enum OriginalLanguage: String, Codable {
-    case en = "en"
-    case ja = "ja"
 }

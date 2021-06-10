@@ -10,6 +10,8 @@
 		10061D5A2671EA3600B73693 /* MovieContracts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10061D592671EA3600B73693 /* MovieContracts.swift */; };
 		10061D5D2671F32E00B73693 /* TVShowCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10061D5B2671F32E00B73693 /* TVShowCell.swift */; };
 		10061D5E2671F32E00B73693 /* TVShowCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10061D5C2671F32E00B73693 /* TVShowCell.xib */; };
+		10061D602671FBA700B73693 /* NetworkLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10061D5F2671FBA700B73693 /* NetworkLayer.swift */; };
+		10061D6926721B7400B73693 /* JGProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 10061D6826721B7400B73693 /* JGProgressHUD */; };
 		1086029126710EE400C4BF23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1086029026710EE400C4BF23 /* AppDelegate.swift */; };
 		1086029526710EE400C4BF23 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1086029426710EE400C4BF23 /* MainViewController.swift */; };
 		1086029A26710EEB00C4BF23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1086029926710EEB00C4BF23 /* Assets.xcassets */; };
@@ -51,6 +53,7 @@
 		10061D592671EA3600B73693 /* MovieContracts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieContracts.swift; sourceTree = "<group>"; };
 		10061D5B2671F32E00B73693 /* TVShowCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowCell.swift; sourceTree = "<group>"; };
 		10061D5C2671F32E00B73693 /* TVShowCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TVShowCell.xib; sourceTree = "<group>"; };
+		10061D5F2671FBA700B73693 /* NetworkLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLayer.swift; sourceTree = "<group>"; };
 		1086028D26710EE400C4BF23 /* Movies App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Movies App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1086029026710EE400C4BF23 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1086029426710EE400C4BF23 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -81,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10061D6926721B7400B73693 /* JGProgressHUD in Frameworks */,
 				B01E216C26716F940077CF1D /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -249,6 +253,7 @@
 			isa = PBXGroup;
 			children = (
 				B01E21612671623E0077CF1D /* Constants.swift */,
+				10061D5F2671FBA700B73693 /* NetworkLayer.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -280,6 +285,7 @@
 			name = "Movies App";
 			packageProductDependencies = (
 				B01E216B26716F940077CF1D /* SDWebImage */,
+				10061D6826721B7400B73693 /* JGProgressHUD */,
 			);
 			productName = "Movies App";
 			productReference = 1086028D26710EE400C4BF23 /* Movies App.app */;
@@ -354,6 +360,7 @@
 			mainGroup = 1086028426710EE400C4BF23;
 			packageReferences = (
 				B01E216A26716F930077CF1D /* XCRemoteSwiftPackageReference "SDWebImage" */,
+				10061D6726721B7400B73693 /* XCRemoteSwiftPackageReference "JGProgressHUD" */,
 			);
 			productRefGroup = 1086028E26710EE400C4BF23 /* Products */;
 			projectDirPath = "";
@@ -400,6 +407,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10061D602671FBA700B73693 /* NetworkLayer.swift in Sources */,
 				B01E215B26715BE00077CF1D /* TVShowsModel.swift in Sources */,
 				108602C82671103500C4BF23 /* UIView+Extensions.swift in Sources */,
 				1086029526710EE400C4BF23 /* MainViewController.swift in Sources */,
@@ -739,6 +747,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		10061D6726721B7400B73693 /* XCRemoteSwiftPackageReference "JGProgressHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JonasGessner/JGProgressHUD";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.2.0;
+			};
+		};
 		B01E216A26716F930077CF1D /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SDWebImage/SDWebImage";
@@ -750,6 +766,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		10061D6826721B7400B73693 /* JGProgressHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 10061D6726721B7400B73693 /* XCRemoteSwiftPackageReference "JGProgressHUD" */;
+			productName = JGProgressHUD;
+		};
 		B01E216B26716F940077CF1D /* SDWebImage */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = B01E216A26716F930077CF1D /* XCRemoteSwiftPackageReference "SDWebImage" */;

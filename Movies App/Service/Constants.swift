@@ -28,6 +28,7 @@ struct Constants {
         case invalidResponse
         case decodingError
         case responseError
+        case urlError
         case unknown
         
         var localizedDescription: String{
@@ -40,6 +41,8 @@ struct Constants {
                 return "Response Error an Occured"
             case .unknown:
                 return "Unknown Error"
+            case .urlError:
+                return "URL Error"
             }
         }
     }
