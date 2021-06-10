@@ -52,6 +52,7 @@ class MainViewController: UIViewController {
     }
     
 }
+
 extension MainViewController {
     
     private func configureUI() {
