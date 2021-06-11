@@ -16,7 +16,6 @@ final class ShowViewModel : ObservableObject, ShowListViewModelProtocol{
     
     weak var delegate: ShowListViewModelDelegate?
     
-    private let apiKey : String = "4005c573921688f26f2b7c5c89d03c88"
     private let networkManager : NetworkManager
     private var cancellable = Set<AnyCancellable>()
     private var pageCount : Int = 1
@@ -26,7 +25,7 @@ final class ShowViewModel : ObservableObject, ShowListViewModelProtocol{
     }
     
     func getData() {
-        guard let url = URL(string: "https://api.themoviedb.org/3/tv/popular?api_key=\(apiKey)&language=en-US&page=1") else {
+        guard let url = URL(string: "\(Constants.baseUrl)/3/tv/popular?api_key=\(Constants.apiKey)&language=en-US&page=1") else {
             return
         }
         networkManager.getDataFromIntenet(url: url, decodingType: TVShowsModel.self)
@@ -47,7 +46,7 @@ final class ShowViewModel : ObservableObject, ShowListViewModelProtocol{
     func getMoreData() {
         pageCount = pageCount + 1
         
-        guard let url = URL(string: "https://api.themoviedb.org/3/tv/popular?api_key=\(apiKey)&language=en-US&page=\(pageCount)") else {
+        guard let url = URL(string: "\(Constants.baseUrl)/3/tv/popular?api_key=\(Constants.apiKey)&language=en-US&page=\(pageCount)") else {
             return
         }
         

@@ -9,8 +9,8 @@ import Foundation
 
 struct Constants {
     
-    static let baseUrl = "https://api.themoviedb.org/"
-    static let apiKey : String = "4005c573921688f26f2b7c5c89d03c88"
+    static let baseUrl = "https://api.themoviedb.org"
+    static let apiKey : String = "Put Your APIKey"
     
     
     enum HttpHeaderField: String {

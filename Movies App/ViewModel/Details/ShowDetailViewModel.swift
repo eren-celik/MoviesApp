@@ -15,7 +15,7 @@ final class ShowDetailViewModel: ShowDetailViewModelProtocol {
     private let movieID: Int
     private let networkManager : NetworkManager
     private var cancallable = Set<AnyCancellable>()
-
+    
     init(movieID : Int, networkManager: NetworkManager) {
         self.movieID = movieID
         self.networkManager = networkManager
@@ -26,7 +26,7 @@ final class ShowDetailViewModel: ShowDetailViewModelProtocol {
     func getData() {
         
         guard let detailShowURL = URL(string:
-                "https://api.themoviedb.org/3/tv/\(movieID)?api_key=4005c573921688f26f2b7c5c89d03c88&language=en-US") else {
+                                        "\(Constants.baseUrl)/3/tv/\(movieID)?api_key=\(Constants.apiKey)&language=en-US") else {
             return
         }
         
@@ -42,6 +42,6 @@ final class ShowDetailViewModel: ShowDetailViewModelProtocol {
                 self?.delegate?.showDetail(value)
             }
             .store(in: &cancallable)
-
+        
     }
 }
