@@ -12,6 +12,7 @@
 		10061D5E2671F32E00B73693 /* TVShowCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 10061D5C2671F32E00B73693 /* TVShowCell.xib */; };
 		10061D602671FBA700B73693 /* NetworkLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10061D5F2671FBA700B73693 /* NetworkLayer.swift */; };
 		10061D6926721B7400B73693 /* JGProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 10061D6826721B7400B73693 /* JGProgressHUD */; };
+		107E3680267339CF00E8BD88 /* ViewBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 107E367F267339CF00E8BD88 /* ViewBuilder.swift */; };
 		1086029126710EE400C4BF23 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1086029026710EE400C4BF23 /* AppDelegate.swift */; };
 		1086029526710EE400C4BF23 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1086029426710EE400C4BF23 /* MainViewController.swift */; };
 		1086029A26710EEB00C4BF23 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1086029926710EEB00C4BF23 /* Assets.xcassets */; };
@@ -59,6 +60,7 @@
 		10061D5B2671F32E00B73693 /* TVShowCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TVShowCell.swift; sourceTree = "<group>"; };
 		10061D5C2671F32E00B73693 /* TVShowCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TVShowCell.xib; sourceTree = "<group>"; };
 		10061D5F2671FBA700B73693 /* NetworkLayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkLayer.swift; sourceTree = "<group>"; };
+		107E367F267339CF00E8BD88 /* ViewBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewBuilder.swift; sourceTree = "<group>"; };
 		1086028D26710EE400C4BF23 /* Movies App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Movies App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1086029026710EE400C4BF23 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1086029426710EE400C4BF23 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -116,6 +118,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		107E36812673403500E8BD88 /* ShowsList */ = {
+			isa = PBXGroup;
+			children = (
+				1086029426710EE400C4BF23 /* MainViewController.swift */,
+			);
+			path = ShowsList;
+			sourceTree = "<group>";
+		};
+		107E36822673475F00E8BD88 /* Shows */ = {
+			isa = PBXGroup;
+			children = (
+				B01E215526715A790077CF1D /* ShowViewModel.swift */,
+				10061D592671EA3600B73693 /* ShowViewModelContracts.swift */,
+			);
+			path = Shows;
+			sourceTree = "<group>";
+		};
+		107E36832673477300E8BD88 /* Details */ = {
+			isa = PBXGroup;
+			children = (
+				B01B649A2672A49400824088 /* ShowDetailViewModel.swift */,
+				B01B649C2672A4CD00824088 /* ShowDetailViewModelContracts.swift */,
+			);
+			path = Details;
+			sourceTree = "<group>";
+		};
 		1086028426710EE400C4BF23 = {
 			isa = PBXGroup;
 			children = (
@@ -175,6 +203,7 @@
 				108602C126710FC100C4BF23 /* Delegates */,
 				108602C226710FD300C4BF23 /* AppContainer.swift */,
 				108602C426710FDA00C4BF23 /* AppRouter.swift */,
+				107E367F267339CF00E8BD88 /* ViewBuilder.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -201,7 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				B01E2165267169A60077CF1D /* HelperUI */,
-				1086029426710EE400C4BF23 /* MainViewController.swift */,
+				107E36812673403500E8BD88 /* ShowsList */,
 				B01B64A62672C4BD00824088 /* Details */,
 			);
 			path = View;
@@ -233,13 +262,6 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		B01B64A02672B52600824088 /* StoryBoards */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = StoryBoards;
-			sourceTree = "<group>";
-		};
 		B01B64A62672C4BD00824088 /* Details */ = {
 			isa = PBXGroup;
 			children = (
@@ -261,10 +283,8 @@
 		B01E2154267156FC0077CF1D /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
-				B01E215526715A790077CF1D /* ShowViewModel.swift */,
-				B01B649A2672A49400824088 /* ShowDetailViewModel.swift */,
-				10061D592671EA3600B73693 /* ShowViewModelContracts.swift */,
-				B01B649C2672A4CD00824088 /* ShowDetailViewModelContracts.swift */,
+				107E36832673477300E8BD88 /* Details */,
+				107E36822673475F00E8BD88 /* Shows */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -290,7 +310,6 @@
 		B01E2165267169A60077CF1D /* HelperUI */ = {
 			isa = PBXGroup;
 			children = (
-				B01B64A02672B52600824088 /* StoryBoards */,
 				10061D5B2671F32E00B73693 /* TVShowCell.swift */,
 				10061D5C2671F32E00B73693 /* TVShowCell.xib */,
 			);
@@ -442,6 +461,7 @@
 			files = (
 				10061D602671FBA700B73693 /* NetworkLayer.swift in Sources */,
 				B01E215B26715BE00077CF1D /* TVShowsModel.swift in Sources */,
+				107E3680267339CF00E8BD88 /* ViewBuilder.swift in Sources */,
 				108602C82671103500C4BF23 /* UIView+Extensions.swift in Sources */,
 				1086029526710EE400C4BF23 /* MainViewController.swift in Sources */,
 				108602C326710FD300C4BF23 /* AppContainer.swift in Sources */,

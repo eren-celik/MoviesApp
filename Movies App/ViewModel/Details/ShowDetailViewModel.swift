@@ -23,7 +23,7 @@ final class ShowDetailViewModel: ShowDetailViewModelProtocol {
     
     
     
-    func load() {
+    func getData() {
         
         guard let detailShowURL = URL(string:
                 "https://api.themoviedb.org/3/tv/\(movieID)?api_key=4005c573921688f26f2b7c5c89d03c88&language=en-US") else {

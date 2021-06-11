@@ -10,6 +10,7 @@ import SDWebImage
 
 class TVShowCell: UITableViewCell {
     static let identifier : String = "movieCell"
+    static let nibName : String = "TVShowCell"
     
     @IBOutlet weak private var tvShowImage: UIImageView!
     @IBOutlet weak private var tvShowName: UILabel!

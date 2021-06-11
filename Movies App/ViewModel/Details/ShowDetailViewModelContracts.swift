@@ -13,5 +13,5 @@ protocol ShowDetailViewModelDelegate: AnyObject {
 
 protocol ShowDetailViewModelProtocol {
     var delegate: ShowDetailViewModelDelegate? { get set }
-    func load()
+    func getData()
 }

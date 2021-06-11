@@ -27,7 +27,7 @@ class MainViewController: UIViewController {
     private var tableView: UITableView = {
         var tableView = UITableView()
         tableView = UITableView(frame: UIScreen.main.bounds)
-        let nib = UINib(nibName: "TVShowCell", bundle: nil)
+        let nib = UINib(nibName: TVShowCell.nibName, bundle: nil)
         tableView.register(nib,
                            forCellReuseIdentifier: TVShowCell.identifier)
         return tableView
@@ -93,11 +93,11 @@ extension MainViewController {
 }
 
 extension MainViewController: ShowListViewModelDelegate{
+    
     func navigate(to route: ShowListViewRoute) {
         switch route {
         case .detail(let viewModel):
-            let viewController = DetailShowViewController()
-            viewController.viewModel = viewModel
+            let viewController = ViewBuilder.makeDetailView(with: viewModel)
             present(viewController, animated: true)
         }
     }
@@ -151,10 +151,12 @@ extension MainViewController: UITableViewDataSource {
 }
 
 extension MainViewController: UITableViewDelegate {
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
         viewModel.selectMovie(at: movieList[indexPath.row].id)
     }
+    
 }
 
 
